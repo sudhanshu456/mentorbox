@@ -11,8 +11,6 @@ class CreateUser(AbstractUser):
 
     username= None
     email = models.EmailField(unique=True)
-    first_name= models.CharField(max_length=100)
-    last_name= models.CharField(max_length=100)
     date_joined = models.DateField(auto_now_add=True)
     
     USERNAME_FIELD = 'email'
@@ -27,7 +25,8 @@ class CreateUser(AbstractUser):
 
 class CustomProfile(models.Model):
     user = models.OneToOneField(CreateUser, on_delete=models.CASCADE,primary_key=True)
-    name=models.CharField(max_length=100)
+    first_name=models.CharField(max_length=100)
+    last_name=models.CharField(max_length=100)
     age=models.IntegerField()
     Experience=models.CharField(max_length=200)
     collegename=models.CharField(null=True,max_length=200)
@@ -35,9 +34,8 @@ class CustomProfile(models.Model):
     passout_year=models.IntegerField()
     course=models.CharField(max_length=200)
     schoolname=models.CharField(max_length=200)
-    profile_pics=models.ImageField(null=True,blank=True)
 
 
-    # def __str__(self):
-    #     return self.user.username
+    def __str__(self):
+        return self.user.email
     
