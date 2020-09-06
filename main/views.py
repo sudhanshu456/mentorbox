@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from accounts.models import CustomProfile
 # Create your views here.
@@ -27,7 +27,7 @@ def home(request):
             proc= form.save(commit=False)
             proc.user=request.user
             proc.save()
-            return render(request,'home.html',context)
+            return redirect('home')
 
       context={'form':form}
       return render(request,'home.html',context)
