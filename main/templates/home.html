@@ -1,0 +1,24 @@
+<p>Logined User</p>
+{% if profile %}
+<p>profile is genereted</p>
+<p>{{profile.name}}</p>
+<p>{{profile.age}}</p>
+<p>{{profile.Experience}}</p>
+<p>{{profile.collegename}}</p>
+<p>{{profile.degree}}</p>
+<p>{{profile.passout_year}}</p>
+<p>{{profile.course}}</p>
+<p>{{profile.schoolname}}</p>
+<p>{{profile.name}}</p>
+{% endif %}
+
+{% if form %}
+<form method="post">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <input type="submit" value="Submit">
+</form>    
+{% endif %}
+
+<p><a href="{% url 'logout' %}">Logout</a></p>
