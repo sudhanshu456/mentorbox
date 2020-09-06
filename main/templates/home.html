@@ -1,15 +1,18 @@
-<p>Logined User</p>
+{% extends 'base.html' %} 
+{% block content %}
+<div class="container">
+<p>Logined User Email : {{request.user.email}}</p>
 {% if profile %}
 <p>profile is genereted</p>
-<p>{{profile.name}}</p>
-<p>{{profile.age}}</p>
-<p>{{profile.Experience}}</p>
-<p>{{profile.collegename}}</p>
-<p>{{profile.degree}}</p>
-<p>{{profile.passout_year}}</p>
-<p>{{profile.course}}</p>
-<p>{{profile.schoolname}}</p>
-<p>{{profile.name}}</p>
+<p>First Name : {{profile.first_name}}</p>
+<p>Last Name : {{profile.last_name}}</p>
+<p>Age : {{profile.age}}</>
+<p>Experience : {{profile.Experience}}</p>
+<p>College Name : {{profile.collegename}}</p>
+<p>Degree : {{profile.degree}}</p>
+<p>Passout year : {{profile.passout_year}}</p>
+<p>Course : {{profile.course}}</p>
+<p>School Name : {{profile.schoolname}}</p>
 {% endif %}
 
 {% if form %}
@@ -17,8 +20,11 @@
     {% csrf_token %}
 
     {{form.as_p}}
-    <input type="submit" value="Submit">
+<button type="submit" class="btn btn-primary">Submit Details</button>
 </form>    
 {% endif %}
+<br>
+<div class="row"><a href="{% url 'logout' %}"><button type="button" class="btn btn-light">Logout</a></button></div>
 
-<p><a href="{% url 'logout' %}">Logout</a></p>
+</div>
+{% endblock %}
